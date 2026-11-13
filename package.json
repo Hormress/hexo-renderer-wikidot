@@ -1,0 +1,21 @@
+{
+    "name": "hexo-renderer-wikidot",
+    "version": "0.1.0",
+    "description": "Wikidot renderer plugin for Hexo",
+    "main": "index",
+    "keywords": [
+        "hexo",
+        "wikidot",
+        "wdpr",
+        "ftml",
+        "renderer"
+    ],
+    "license": "MIT",
+    "peerDependencies": {
+        "hexo": "^7.0.0"
+    },
+    "dependencies": {
+        "@wdprlib/parser": "^6.0.0",
+        "@wdprlib/render": "^5.0.0"
+    }
+}
