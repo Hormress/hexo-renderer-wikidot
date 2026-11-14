@@ -10,7 +10,7 @@
         "ftml",
         "renderer"
     ],
-    "license": "MIT",
+    "license": "AGPL-3.0-only",
     "peerDependencies": {
         "hexo": "^7.0.0"
     },
