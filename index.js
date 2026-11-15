@@ -18,13 +18,12 @@ function formatName(permalink) {
     const root = hexo.config.root;
     let pathname = new URL(permalink).pathname;
     pathname = pathname.startsWith(root) ? pathname.slice(root.length) : pathname;
-    pathname = pathname.replace(/\/+$/, '').replace(/\.html$/i, '');
+    pathname = pathname.replace(/%3A/gi, ':').replace(/\/+$/, '').replace(/\.html$/i, '');
     return pathname;
 }
 
 function formatRef(pathname) {
-    pathname = pathname.replace(/^\/+/, '');
-    pathname = pathname.replace(/\/+$/, '').replace(/\.html$/i, '');
+    pathname = pathname.replace(/^\/+/, '').replace(/\/+$/, '').replace(/\.html$/i, '');
     return pathname;
 }
 
@@ -70,7 +69,11 @@ hexo.extend.filter.register("after_post_render", async function (page) {
         settings: {...createSettings("page"), allowStyleElements: true}
     });
 
-    const rendered = await renderWikitext(document);
+    const rendered = await renderWikitext(document, {
+        resolvers: {
+            resolvePageExistence: async (names) => new Set(names)
+        }
+    });
     page.content = rendered.html;
     return page;
 }, 5);
