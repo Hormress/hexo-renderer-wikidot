@@ -55,7 +55,7 @@ hexo.extend.filter.register("after_post_render", async function (page) {
         page: {
             fullName,
             unixName: fullName.slice(fullName.lastIndexOf(":") + 1),
-            tags: [],
+            tags: page.tags ? page.tags.data.map(tag => tag.name) : [],
             urlPath: new URL(page.permalink, hexo.config.url).pathname
         },
         dataProvider: {
