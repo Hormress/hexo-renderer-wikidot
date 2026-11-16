@@ -50,7 +50,7 @@ hexo.extend.filter.register('before_generate', function() {
 hexo.extend.filter.register("after_post_render", async function (page) {
     const ext = path.extname(page.source || "").toLowerCase();
     if (!wd_ext.has(ext)) return page;
-    const fullName = formatName(page.permalink);;
+    const fullName = formatName(page.permalink);
     const document = await processWikitext(page._content, {
         page: {
             fullName,
